@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rescue Robot - Burning Grid Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚨 Rescue Robot - Burning Grid Simulator</h1>
+        <p class="subtitle">Design and Analysis of Algorithms Assignment - BFS Path Optimization</p>
+
+        <div class="controls">
+            <div class="input-group">
+                <label>Grid Rows (N)</label>
+                <input type="number" id="rows" value="5" min="3" max="20">
+            </div>
+            <div class="input-group">
+                <label>Grid Cols (M)</label>
+                <input type="number" id="cols" value="5" min="3" max="20">
+            </div>
+            <button class="btn btn-tertiary" onclick="createGrid()">Create Grid</button>
+        </div>
+
+        <div class="controls">
+            <div style="flex: 1;">
+                <label style="font-size: 12px; font-weight: 600; color: #555; margin-bottom: 8px; display: block;">Select Tool:</label>
+                <div class="tool-selector">
+                    <button class="tool-btn" onclick="selectTool('S')" data-tool="S">🤖 Start (S)</button>
+                    <button class="tool-btn" onclick="selectTool('E')" data-tool="E">🚪 Exit (E)</button>
+                    <button class="tool-btn" onclick="selectTool('F')" data-tool="F">🔥 Fire (F)</button>
+                    <button class="tool-btn" onclick="selectTool('#')" data-tool="#">🧱 Wall (#)</button>
+                    <button class="tool-btn active" onclick="selectTool('.')" data-tool=".">🛣️ Road (.)</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="simulate()">▶️ Simulate</button>
+                <button class="btn btn-secondary" onclick="reset()">🔄 Reset</button>
+                <button class="btn btn-tertiary" onclick="clearGrid()">🗑️ Clear Grid</button>
+            </div>
+            <div class="speed-control">
+                <label style="font-size: 12px; font-weight: 600; color: #555;">Speed:</label>
+                <input type="range" id="speed" min="100" max="2000" value="500" step="100">
+                <span id="speedLabel">500ms</span>
+            </div>
+        </div>
+
+        <div class="grid-container">
+            <div class="grid" id="grid"></div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-box" style="background: #3498db; color: white;">🤖</div>
+                <span>Start (S)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #2ecc71; color: white;">🚪</div>
+                <span>Exit (E)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #e74c3c;">🔥</div>
+                <span>Fire (F)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #34495e;"></div>
+                <span>Wall (#)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #ecf0f1;"></div>
+                <span>Road (.)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #f39c12;">🤖</div>
+                <span>Robot Moving</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-box" style="background: #c0392b;">🔥</div>
+                <span>Burned</span>
+            </div>
+        </div>
+
+        <div id="status"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
